@@ -1,20 +1,29 @@
 
 
+
+
 export const Navbar = () => {
-    return (
-        <header className="shadow mb-2">
-            <div className="max-w-screen-lg mx-auto py-4 flex items-center">
-            <a href="#" className="text-2xl flex items-center font-black">
-                <span>edApp</span>
-            </a>
-            <nav className="">
-                <ul className="flex md:gap-x-8">
-                    <li className=""><a href="">About</a></li>
-                    <li className=""><a href="">Sign Up</a></li>
-                    <li className=""><a href="" className="border-2 px-6 py-2 rounded-xl border-blue-600 text-blue-600 font-medium">Log In</a></li>
-                </ul>
-            </nav>
-            </div>
-        </header>
-    )
-}
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+
+          {/* Left: Logo or brand */}
+          <div className="text-xl font-bold text-blue-600">
+            edApp
+          </div>
+
+          {/* Right: Navigation Links */}
+          <div className="flex space-x-6">
+            <a href="#" className="text-gray-700 hover:text-blue-500">Home</a>
+            <a href="#" className="text-gray-700 hover:text-blue-500">About</a>
+            <a href="#" className="text-gray-700 hover:text-blue-500">Services</a>
+            <a href="#" className="text-gray-700 hover:text-blue-500">Contact</a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  );
+};
+
