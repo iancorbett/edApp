@@ -9,7 +9,7 @@ export const HomePage = () => {
             <h1>hello</h1>
             
             <Link to="/form">
-                <button>
+                <button className="bg-auto">
                     Enter
                 </button>
             </Link>

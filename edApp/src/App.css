@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+a {
+  color: white;
+}
+
+button {
+  background-color: black;
+  border-color: gold;
+  border-width: 3px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
