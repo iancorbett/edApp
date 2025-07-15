@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HomePage } from '../pages/HomePage';
 
 
 export const Navbar = () => {
@@ -14,7 +15,7 @@ export const Navbar = () => {
 
           {/* Left: Logo */}
           <div className="text-2xl font-bold text-white">
-            EdApp
+            <a href="#"><h2 className='text-3xl font-bold'>EdApp</h2></a>
           </div>
 
           {/* Desktop Nav */}
