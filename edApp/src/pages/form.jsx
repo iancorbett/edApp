@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 
 
+
 export const Form = (
     { students = [
     { id: '1', name: 'Alice' },
@@ -27,7 +28,24 @@ export const Form = (
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you could send data to backend or state management
+    
+    const newObservation = {
+        student: selectedStudent,
+        type: observationType,
+        description: behaviorDesc,
+        timestamp: new Date().toISOString(), // Optional: helps track entries
+      };
+
+      const stored = JSON.parse(localStorage.getItem("observations")) || [];
+
+      const updated = [...stored, newObservation];
+
+      localStorage.setItem("observations", JSON.stringify(updated));
+
+      console.log("Saved to localStorage:", newObservation);
+
+
+      // Here you could send data to backend or state management
     console.log({
       student: selectedStudent,
       type: observationType,
