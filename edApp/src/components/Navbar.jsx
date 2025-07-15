@@ -14,15 +14,16 @@ export const Navbar = () => {
 
           {/* Left: Logo */}
           <div className="text-2xl font-bold text-white">
-            MyLogo
+            EdApp
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-6">
             <a href="#">Home</a>
             <a href="#">About</a>
-            <a href="#">Services</a>
             <a href="#">Contact</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Log In</a>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -45,8 +46,9 @@ export const Navbar = () => {
           <div className="md:hidden mt-2 space-y-2 pb-4">
             <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Home</a>
             <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">About</a>
-            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Services</a>
             <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Contact</a>
+            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Sign Up</a>
+            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Log In</a>
           </div>
         )}
       </div>
