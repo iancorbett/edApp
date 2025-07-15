@@ -1,6 +1,6 @@
 
 
-export const form = () => {
+export const Form = () => {
     return (
         <div>hello world</div>
     )

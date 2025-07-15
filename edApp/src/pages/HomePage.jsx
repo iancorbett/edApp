@@ -1,7 +1,17 @@
+import { Link } from "react-router-dom"
 
 
 export const HomePage = () => {
     return (
-        <div>welcome to the site</div>
+        <>
+            <h1>hello</h1>
+            
+            <Link to="/form">
+                <button>
+                    Enter
+                </button>
+            </Link>
+            
+        </>
     )
 }
