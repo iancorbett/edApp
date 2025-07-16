@@ -6,6 +6,7 @@ export const HomePage = () => {
     return (
         <>
             <Navbar />
+            
             <h1>hello</h1>
             
             <Link to="/form">
