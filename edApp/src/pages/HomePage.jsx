@@ -7,7 +7,7 @@ export const HomePage = () => {
         <>
             <Navbar />
             
-            <h1>hello</h1>
+            <h1>EdApp</h1>
             
             <Link to="/form">
                 <button className="bg-auto">
