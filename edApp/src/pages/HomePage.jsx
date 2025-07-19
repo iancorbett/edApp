@@ -23,7 +23,11 @@ export const HomePage = () => {
       </div>
             
             
-            
+      <div className="mt-12 lg:mt-0 lg:ml-12 flex justify-center">
+        <div className="w-48 h-48 rounded-full bg-gray-200 shadow-md flex items-center justify-center text-2xl font-semibold text-brown-700 border-2 border-amber-600">
+          EdApp
+        </div>
+      </div>
             
         </section>
     )
