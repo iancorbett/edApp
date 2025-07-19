@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "../components/Navbar";
 import { BookOpen, BarChart, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -37,9 +38,11 @@ export const HomePage = () => {
           Streamline your workflow with our data visualization.
         </p>
         <div className="mt-6">
+            <Link to={"/form"}>
           <button className="px-6 py-3 bg-black text-white text-lg rounded-md hover:bg-gray-800 transition">
             Get Started Now
           </button>
+          </Link>
         </div>
       </section>
 
