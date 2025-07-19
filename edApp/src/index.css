@@ -30,6 +30,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  @apply bg-gradient-to-r from-blue-300 to-blue-100 m-0;
+
 }
 
 h1 {
