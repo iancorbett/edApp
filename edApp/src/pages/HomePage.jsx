@@ -52,7 +52,7 @@ export const HomePage = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="p-6 bg-white rounded-2xl shadow hover:shadow-md transition"
+              className="p-6 bg-white rounded-2xl shadow hover:shadow-md transition border-2"
             >
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold">{feature.title}</h3>
