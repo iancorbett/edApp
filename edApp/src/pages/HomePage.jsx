@@ -1,34 +1,63 @@
-import { Link } from "react-router-dom"
-import { Navbar } from "../components/Navbar"
+import React from "react";
+import { Navbar } from "../components/Navbar"; // Make sure this path matches your project
+import { BookOpen, BarChart, Zap } from "lucide-react";
 
+const features = [
+  {
+    title: "Perk 1",
+    description: "Description.",
+    icon: <BookOpen className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    title: "Perk 2",
+    description: "Description.",
+    icon: <BarChart className="w-8 h-8 text-blue-600" />,
+  },
+  {
+    title: "Perk 3",
+    description: "Description.",
+    icon: <Zap className="w-8 h-8 text-blue-600" />,
+  },
+];
 
 export const HomePage = () => {
-    return (
-        <section className="bg-gradient-to-r from-blue-100 to-purple-100 px-6 py-16 lg:flex lg:items-center lg:justify-between">
-            <Navbar />
+  return (
+    <div className="min-h-screen flex flex-col bg-white text-gray-800">
+      {/* Navbar */}
+      <Navbar />
 
-            <div className="max-w-xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-          Start Saving Time
+      {/* Hero Section */}
+      <section className="bg-white pt-28 pb-20 text-center px-6">
+        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+          Empower Faster Workflow with EdApp
         </h1>
-        <p className="text-lg text-gray-700 mb-6">
-          Visualize Data and Streamline Your Work Using EdApp's features!
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          Streamline your workflow with our data visualization.
         </p>
-        <a
-          href="#"
-          className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition"
-        >
-          Get Started
-        </a>
-      </div>
-            
-            
-      <div className="mt-12 lg:mt-0 lg:ml-12 flex justify-center">
-        <div className="w-48 h-48 rounded-full bg-gray-200 shadow-md flex items-center justify-center text-2xl font-semibold text-brown-700 border-2 border-amber-600">
-          EdApp
+        <div className="mt-6">
+          <button size="lg" className="bg-blue-600 text-white hover:bg-blue-700">
+            Get Started Now
+          </button>
         </div>
-      </div>
-            
-        </section>
-    )
+      </section>
+
+      {/* Feature Cards Section */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="p-6 border rounded-2xl shadow hover:shadow-md transition"
+              >
+                <div className="mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold">{feature.title}</h3>
+                <p className="mt-2 text-gray-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
