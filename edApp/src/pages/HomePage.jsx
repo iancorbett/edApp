@@ -36,12 +36,12 @@ export const HomePage = () => {
         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
           Empower Faster Workflow with EdApp
         </h1>
-        <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+        <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto pt-2">
           Streamline your workflow with our data visualization.
         </p>
         <div className="mt-6">
             <Link to={"/form"}>
-          <button className="px-6 py-3 bg-black text-white text-lg rounded-md hover:bg-gray-800 transition">
+          <button className="px-6 py-3 bg-black text-white text-lg rounded-md hover:bg-gray-800 transition mt-3">
             Get Started Now
           </button>
           </Link>
