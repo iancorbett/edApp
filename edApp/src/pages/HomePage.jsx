@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "../components/Navbar";
 import { BookOpen, BarChart, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Footer } from "../components/Footer";
 
 const features = [
   {
@@ -61,6 +62,7 @@ export const HomePage = () => {
           ))}
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
