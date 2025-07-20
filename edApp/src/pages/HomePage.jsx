@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { BookOpen, BarChart, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/Footer";
+import { About } from "../components/About";
 
 const features = [
   {
@@ -62,6 +63,7 @@ export const HomePage = () => {
           ))}
         </div>
       </section>
+      <About />
       <Footer />
     </div>
   );
