@@ -8,7 +8,17 @@ export const About = () => {
           About EdApp
         </h2>
         <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
-          EdApp is an innovative online learning platform built to empower educators and students through intuitive tools, smart analytics, and modern design. Whether you're creating content or engaging learners, EdApp helps you do it better — faster.
+        This prototype is part of a larger project aimed at streamlining student behavior and intervention data collection for schools. 
+        Built from scratch as a capstone collaboration between an educator and a software engineer, this early version demonstrates 
+        key user functionality and lays the groundwork for scalable development. Features Implemented So Far: • Clean, teacher-friendly 
+        login system • Streamlined student observation entry form • Functional user interface with minimalist design • Local database 
+        etup (undergoing optimization for future cloud scalability) Planned Features: • Multi-school database architecture 
+        (multi-tenant support) • Benchmark tracking (Fall/Winter/Spring performance views) • Tiered intervention tools 
+        (CICO, contracts, ABC data, etc.) • Admin oversight dashboard (assign access, triage flagged data) • Role-based access 
+        (teachers vs. admin views) • Visual data dashboards (student and class-level trends) • Needs Review workflow 
+        (flags for admin follow-up) • AI-assisted tagging and alert system • Student reflection / self-monitoring portal 
+        • Exportable data for SPED/504/MTSS documentation Built for: • Special education teams • General ed teachers collecting 
+        Tier 1 data • Admins managing MTSS or CI3T frameworks • Schools seeking better insight with less paperwork
         </p>
       </div>
     </section>
