@@ -2,6 +2,8 @@ import React from "react";
 
 export const SignUpForm = () => {
     return (
-        <form action="submit"></form>
+        <form action="submit">
+            hello
+        </form>
     )
 }
