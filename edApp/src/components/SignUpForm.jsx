@@ -32,11 +32,11 @@ export const SignUpForm = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Name
+              First Name
             </label>
             <input
               type="text"
-              name="name"
+              name="firstname"
               required
               value={formData.name}
               onChange={handleChange}
@@ -45,11 +45,11 @@ export const SignUpForm = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Name
+              Last Name
             </label>
             <input
               type="text"
-              name="name"
+              name="lastname"
               required
               value={formData.name}
               onChange={handleChange}
@@ -58,11 +58,11 @@ export const SignUpForm = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Name
+              Username
             </label>
             <input
               type="text"
-              name="name"
+              name="username"
               required
               value={formData.name}
               onChange={handleChange}
@@ -71,11 +71,11 @@ export const SignUpForm = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Name
+              School
             </label>
             <input
               type="text"
-              name="name"
+              name="school"
               required
               value={formData.name}
               onChange={handleChange}
