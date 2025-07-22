@@ -17,7 +17,7 @@ export const SignUpForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // You can handle form submission here (e.g., send to API)
     console.log("Signup Data:", formData);
