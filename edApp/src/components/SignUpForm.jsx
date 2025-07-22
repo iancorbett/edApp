@@ -35,7 +35,7 @@ export const SignUpForm = () => {
   
         if (res.ok) {
           setMessage("Signup successful!");
-          setFormData({ name: "", email: "", password: "" });
+          setFormData({ firstname: "", email: "", password: "" });
         } else {
           setMessage(data.message || "Signup failed.");
         }
