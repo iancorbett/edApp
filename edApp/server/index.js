@@ -20,7 +20,7 @@ app.post("/api/signup", async (req, res) => {
 
   try {
     const result = await pool.query(
-      "INSERT INTO teachers (firstname, lastname, username, email, school, password) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO teachers (first_name, last_name, username, email, school, password) VALUES ($1, $2, $3) RETURNING *",
       [firstname, lastname, username, email, school, password] // 🔐 NOTE: store hashed password in real apps!
       
     );
