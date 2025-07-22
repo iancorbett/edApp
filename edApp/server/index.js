@@ -16,12 +16,12 @@ const pool = new Pool({
 
 // API route to save signup data
 app.post("/api/signup", async (req, res) => {
-  const { name, email, password } = req.body;
+  const { firstname, lastname, username, email, school, password } = req.body;
 
   try {
     const result = await pool.query(
       "INSERT INTO teachers (firstname, lastname, username, email, school, password) VALUES ($1, $2, $3) RETURNING *",
-      [name, email, password] // 🔐 NOTE: store hashed password in real apps!
+      [firstname, lastname, username, email, school, password] // 🔐 NOTE: store hashed password in real apps!
       
     );
     res.status(201).json(result.rows[0]);
