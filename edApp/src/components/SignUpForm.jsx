@@ -10,6 +10,8 @@ export const SignUpForm = () => {
     password: "",
   });
 
+  const [message, setMessage] = useState(""); 
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
