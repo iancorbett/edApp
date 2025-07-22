@@ -7,11 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-  user: "your_pg_username",
+  user: "ianmclaren",
   host: "localhost",
-  database: "your_database",
-  password: "your_password",
-  port: 5432,
+  database: "edapp",
+  password: "Murray1738",
+  port: 5173,
 });
 
 // API route to save signup data
