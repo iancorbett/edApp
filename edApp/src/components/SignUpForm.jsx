@@ -21,6 +21,28 @@ export const SignUpForm = () => {
     e.preventDefault();
     // You can handle form submission here (e.g., send to API)
     console.log("Signup Data:", formData);
+    
+    try {
+        const res = await fetch("http://localhost:3001/api/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          setMessage("Signup successful!");
+          setFormData({ name: "", email: "", password: "" });
+        } else {
+          setMessage(data.message || "Signup failed.");
+        }
+      } catch (err) {
+        console.error(err);
+        setMessage("An error occurred.");
+      }
   };
 
   return (
