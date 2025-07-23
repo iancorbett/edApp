@@ -139,10 +139,10 @@ export const SignUpForm = () => {
             Create Account
           </button>
           {message && (
-  <p className="mt-4 text-center text-green-600 font-medium">
-    {message}
-  </p>
-)}
+        <p className="mt-4 text-center text-green-600 font-medium">
+            {message}
+        </p>
+    )}
         </form>
       </div>
     </section>
