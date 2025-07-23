@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ export const LogInForm = () => {
 
       if (res.ok) {
         setMessage("Login successful!");
+
         // Optionally redirect user or set auth token
       } else {
         setMessage(data.message || "Login failed.");
