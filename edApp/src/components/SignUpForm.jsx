@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const SignUpForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
