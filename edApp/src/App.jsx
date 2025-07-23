@@ -8,14 +8,14 @@ import { SignUp } from './pages/SignUp'
 function App() {
 
   return (
-    <Router>
+    
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/form" element={<Form />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/signup" element={<SignUp />}/>
       </Routes>
-    </Router>
+    
   )
   
 }
