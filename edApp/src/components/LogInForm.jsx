@@ -36,7 +36,7 @@ export const LogInForm = () => {
 
       if (res.ok) {
         setMessage("Login successful!");
-
+        navigate("/form");
         // Optionally redirect user or set auth token
       } else {
         setMessage(data.message || "Login failed.");
