@@ -15,7 +15,7 @@ export const Navbar = () => {
 
           {/* Left: Logo */}
           <div className="text-2xl font-bold text-white">
-            <a href="#"><h2 className='text-3xl font-bold'>EdApp</h2></a>
+            <Link to={"/"}><h2 className='text-3xl font-bold'>EdApp</h2></Link>
           </div>
 
           {/* Desktop Nav */}
