@@ -6,6 +6,8 @@ import jwt from "jsonwebtoken";
 
 dotenv.config();
 
+const SECRET_KEY = process.env.JWT_SECRET;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
