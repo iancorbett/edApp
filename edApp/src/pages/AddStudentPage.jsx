@@ -1,13 +1,13 @@
 import React from "react";
 import { Navbar } from "../components/Navbar";
-import { AddStudentsForm } from "../components/AddStudentsForm";
+import { AddStudentForm } from "../components/AddStudentForm";
 
-export const AddStudentsPage = () => {
+export const AddStudentPage = () => {
     return (
         <section>
             <Navbar />
             <div>
-                <AddStudentsForm />
+                <AddStudentForm />
             </div>
         </section>
     )
