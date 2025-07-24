@@ -91,6 +91,13 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
       "INSERT INTO students (first_name, last_name, teacher_id) VALUES ($1, $2, $3) RETURNING *",
       [first_name, last_name, teacher_id]
     );
+    res.status(201).json({
+      message: "Student added successfully",
+      student: result.rows[0],
+    });
+  } catch (err) {
+    console.error("Error adding student:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
