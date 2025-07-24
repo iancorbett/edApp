@@ -35,6 +35,8 @@ export const LogInForm = () => {
       const data = await res.json();
 
       if (res.ok) {
+        localStorage.setItem("token", data.token);
+
         setMessage("Login successful!");
         navigate("/addstudents");
         // Optionally redirect user or set auth token
