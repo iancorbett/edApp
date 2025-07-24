@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "../components/Navbar";
 import { AddStudentsForm } from "../components/AddStudentsForm";
 
-export const AddStudetsPage = () => {
+export const AddStudentsPage = () => {
     return (
         <section>
             <Navbar />
