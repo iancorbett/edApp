@@ -24,7 +24,7 @@ export const Navbar = () => {
             <a href="#about">About</a>
             <a href="#">Contact</a>
             <Link to="/signup">Sign Up</Link>
-            <a href="#">Log In</a>
+            <Link to="/login">Log In</Link>
           </div>
 
           {/* Mobile Hamburger Button */}
