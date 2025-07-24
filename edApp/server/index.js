@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
 import { Pool } from "pg";
+import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
