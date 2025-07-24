@@ -49,6 +49,9 @@ app.post("/api/login", async (req, res) => {
     if (result.rows.length > 0) {
       const teacher = result.rows[0];
 
+      console.log("Teacher row from DB:", teacher);
+
+
       const token = jwt.sign(
         { teacher_id: teacher.teacher_id },
         SECRET_KEY,
