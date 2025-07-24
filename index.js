@@ -47,7 +47,15 @@ app.post("/api/login", async (req, res) => {
     );
 
     if (result.rows.length > 0) {
-      res.status(200).json({ message: "Login successful!" });
+      const teacher = result.rows[0];
+
+      const token = jwt.sign(
+        { teacher_id: teacher.teacher_id },
+        SECRET_KEY,
+        { expiresIn: "1h" } 
+      );
+
+      res.status(200).json({ message: "Login successful!", token });
     } else {
       res.status(401).json({ message: "Invalid username or password." });
     }
