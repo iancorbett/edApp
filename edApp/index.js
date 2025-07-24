@@ -83,7 +83,8 @@ app.post("/api/login", async (req, res) => {
 };
 
 app.post("/api/addstudent", authenticateToken, async (req, res) => {
-  
+  const { first_name, last_name } = req.body;
+  const teacher_id = req.user.teacher_id;
 })
 
 app.listen(3001, () => console.log("Server running on http://localhost:3001"));
