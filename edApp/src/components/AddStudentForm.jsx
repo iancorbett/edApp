@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AddStudentsForm = () => {
+export const AddStudentForm = () => {
     return (
         <div>
             hello
