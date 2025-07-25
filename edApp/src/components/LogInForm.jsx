@@ -38,7 +38,7 @@ export const LogInForm = () => {
         localStorage.setItem("token", data.token);
 
         setMessage("Login successful!");
-        navigate("/addstudent");
+        navigate("/welcome");
         
       } else {
         setMessage(data.message || "Login failed.");
