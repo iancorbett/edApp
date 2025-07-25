@@ -6,6 +6,7 @@ import { About } from './components/About'
 import { SignUp } from './pages/SignUp'
 import { LogIn } from './pages/LogIn'
 import { AddStudentPage } from './pages/AddStudentPage'
+import { WelcomePage } from './pages/WelcomePage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/login" element={<LogIn />}/>
         <Route path="/addstudent" element={<AddStudentPage />}/>
+        <Route path="/welcome" element={<WelcomePage />}/>
       </Routes>
     
   )
