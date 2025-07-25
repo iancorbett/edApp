@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { HomePage } from '../pages/HomePage';
 
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -35,7 +37,16 @@ export const Navbar = () => {
             <a href="#about">About</a>
             <a href="#">Contact</a>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/login">Log In</Link>
+            {!isLoggedIn ? (
+              <Link to="/login">Log In</Link>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-red-400"
+              >
+                Logout
+              </button>
+            )}
           </div>
 
           {/* Mobile Hamburger Button */}
