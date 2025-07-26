@@ -7,6 +7,7 @@ import { SignUp } from './pages/SignUp'
 import { LogIn } from './pages/LogIn'
 import { AddStudentPage } from './pages/AddStudentPage'
 import { WelcomePage } from './pages/WelcomePage'
+import { Students } from './pages/Students'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<LogIn />}/>
         <Route path="/addstudent" element={<AddStudentPage />}/>
         <Route path="/welcome" element={<WelcomePage />}/>
+        <Route path="/students" element={<Students />}/>
       </Routes>
     
   )
