@@ -1,3 +1,4 @@
+import { FormInput } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -25,7 +26,9 @@ export const WelcomePage = () => {
           to="/settings"
           className="block bg-yellow-500 text-white px-6 py-3 rounded hover:bg-yellow-600 transition"
         >
-          ⚙️ Settings
+            <span>
+          <FormInput className="inline"/> Add incident
+          </span>
         </Link>
         <button
           onClick={() => {
