@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+
+
+
 export const Form = () => {
   const [students, setStudents] = useState([]);
   const [step, setStep] = useState(1);
@@ -34,6 +37,34 @@ export const Form = () => {
 
     setSubmitted(true);
   };
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      const token = localStorage.getItem("token");
+  
+      try {
+        const res = await fetch("http://localhost:3001/api/students", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (!res.ok) throw new Error("Failed to fetch students");
+        const data = await res.json();
+  
+        const formatted = data.map((s) => ({
+          id: s.id || s.student_id, // depends on your DB column name
+          name: `${s.first_name} ${s.last_name}`,
+        }));
+  
+        setStudents(formatted);
+      } catch (err) {
+        console.error("Error loading students:", err);
+      }
+    };
+  
+    fetchStudents();
+  }, []);
 
   if (submitted) {
     return (
