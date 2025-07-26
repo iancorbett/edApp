@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const Students = () => {
-    return (
-        <section>
-            hey
-        </section>
-    )
-}
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      const token = localStorage.getItem("token");
+
+      try {
+        const res = await fetch("http://localhost:3001/api/students", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await res.json();
+        setStudents(data);
+      } catch (err) {
+        console.error("Error fetching students:", err);
+      }
+    };
+
+    fetchStudents();
+  }, []);
+
+  return (
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-6">👩‍🏫 Your Students</h1>
+
+      {students.length === 0 ? (
+        <p>No students added yet.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-200 rounded shadow">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="py-2 px-4 border-b text-left">#</th>
+                <th className="py-2 px-4 border-b text-left">First Name</th>
+                <th className="py-2 px-4 border-b text-left">Last Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student, index) => (
+                <tr key={student.student_id} className="hover:bg-gray-50">
+                  <td className="py-2 px-4 border-b">{index + 1}</td>
+                  <td className="py-2 px-4 border-b">{student.first_name}</td>
+                  <td className="py-2 px-4 border-b">{student.last_name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
