@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Navbar } from "../components/Navbar";
 
 export const Students = () => {
   const [students, setStudents] = useState([]);
@@ -25,6 +26,10 @@ export const Students = () => {
   }, []);
 
   return (
+    <section>
+
+    <Navbar />
+
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-6">👩‍🏫 Your Students</h1>
 
@@ -53,5 +58,6 @@ export const Students = () => {
         </div>
       )}
     </div>
+    </section>
   );
 };
