@@ -101,6 +101,23 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
   }
 });
 
+// Add to your server code
+app.get("/api/students", authenticateToken, async (req, res) => {
+  const teacher_id = req.user.teacher_id;
+
+  try {
+    const result = await pool.query(
+      "SELECT * FROM students WHERE teacher_id = $1",
+      [teacher_id]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Error fetching students:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 app.get("/", (req, res) => {
   res.send("API is running");
 });
