@@ -23,7 +23,7 @@ export const WelcomePage = () => {
           📋 View Students
         </Link>
         <Link
-          to="/settings"
+          to="/form"
           className="block bg-yellow-500 text-white px-6 py-3 rounded hover:bg-yellow-600 transition"
         >
             <span>
