@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 
-export const Form = ({
-  students = [
-    { id: "1", name: "Alice" },
-    { id: "2", name: "Bob" },
-    { id: "3", name: "Charlie" },
-  ],
-}) => {
+export const Form = () => {
+  const [students, setStudents] = useState([]);
   const [step, setStep] = useState(1);
   const [selectedStudent, setSelectedStudent] = useState("");
   const [observationType, setObservationType] = useState("");
