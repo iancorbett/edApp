@@ -24,18 +24,27 @@ const pool = new Pool({
 app.post("/api/signup", async (req, res) => {
   const { firstname, lastname, username, email, password, role, school_id } = req.body;
 
-  if (role === "teacher") {
-    await pool.query(
-      "INSERT INTO teachers (first_name, last_name, username, email, password, school_id) VALUES ($1, $2, $3, $4, $5, $6)",
-      [firstname, lastname, username, email, password, school_id]
-    );
-  } else if (role === "admin") {
-    await pool.query(
-      "INSERT INTO admins (name, email, password, school_id) VALUES ($1, $2, $3, $4)",
-      [`${firstname} ${lastname}`, email, password, school_id]
-    );
-  } else {
-    return res.status(400).json({ error: "Invalid role selected" });
+  try {
+    if (role === "teacher") {
+      const result = await pool.query(
+        `INSERT INTO teachers (first_name, last_name, username, email, password, school_id)
+         VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+        [firstname, lastname, username, email, password, school_id]
+      );
+      return res.status(201).json(result.rows[0]);
+    } else if (role === "admin") {
+      const result = await pool.query(
+        `INSERT INTO admins (first_name, last_name, username, email, password, school_id)
+         VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+        [`${firstname} ${lastname}`, username, email, password, school_id]
+      );
+      return res.status(201).json(result.rows[0]);
+    } else {
+      return res.status(400).json({ error: "Invalid role selected" });
+    }
+  } catch (err) {
+    console.error("Signup error:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
