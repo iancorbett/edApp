@@ -40,7 +40,7 @@ export const HomePage = () => {
           Streamline your workflow with our data visualization.
         </p>
         <div className="mt-6">
-            <Link to={"/form"}>
+            <Link to={"/signup"}>
           <button className="px-6 py-3 bg-black text-white text-lg rounded-md hover:bg-gray-800 transition mt-3">
             Get Started Now
           </button>
