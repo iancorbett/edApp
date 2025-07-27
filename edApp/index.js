@@ -127,13 +127,15 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
 app.get("/api/students", authenticateToken, async (req, res) => {
   const { id, role } = req.user;
 
-  try {
+  if (role === "teacher") {
     const result = await pool.query(
       "SELECT * FROM students WHERE teacher_id = $1",
-      [teacher_id]
+      [id]
     );
-    res.json(result.rows);
-  } catch (err) {
+    return res.json(result.rows);
+  } 
+  
+  catch (err) {
     console.error("Error fetching students:", err);
     res.status(500).json({ error: "Internal server error" });
   }
