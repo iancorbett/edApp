@@ -18,7 +18,7 @@ const features = [
   },
   {
     title: "Cohesive Data",
-    description: "Data that goes beyond numbers to create a clear picture of your school.",
+    description: "Data that goes beyond numbers to create a clear snapshot of your school.",
     icon: <Zap className="w-8 h-8 text-blue-600" />,
   },
 ];
