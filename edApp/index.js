@@ -22,7 +22,7 @@ const pool = new Pool({
 
 // API route to save signup data
 app.post("/api/signup", async (req, res) => {
-  const { firstname, lastname, username, email, school, password } = req.body;
+  const { firstname, lastname, username, email, password, role, school_id } = req.body;
 
   try {
     const result = await pool.query(
