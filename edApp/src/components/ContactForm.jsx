@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
+
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -13,10 +15,21 @@ export const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For now, we'll just log it – you can later send it to an API or service
-    console.log("Contact Form Submitted:", formData);
-    setStatus("Thanks for reaching out!");
-    setFormData({ name: "", email: "", message: "" });
+    emailjs
+      .send(
+        "your_service_id",       // Replace with your EmailJS service ID
+        "your_template_id",      // Replace with your EmailJS template ID
+        formData,
+        "your_public_key"        // Replace with your EmailJS public key
+      )
+      .then(() => {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((err) => {
+        console.error("EmailJS Error:", err);
+        setStatus("Failed to send message. Please try again.");
+      });
   };
 
   return (
