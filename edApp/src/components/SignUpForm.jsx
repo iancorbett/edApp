@@ -10,8 +10,8 @@ export const SignUpForm = () => {
     lastname: "",
     username: "",
     email: "",
-    school: "",
     password: "",
+    school_id: "",
   });
 
   const [message, setMessage] = useState(""); 
