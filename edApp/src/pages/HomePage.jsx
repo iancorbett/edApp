@@ -8,17 +8,17 @@ import { About } from "../components/About";
 const features = [
   {
     title: "Intuitive Interface",
-    description: "Description.",
+    description: "Simple oberservation entry that teachers view with ease.",
     icon: <BookOpen className="w-8 h-8 text-blue-600" />,
   },
   {
     title: "Proactive Intervention",
-    description: "Description.",
+    description: "Catch trends in student data early in order to provide effective interventions.",
     icon: <BarChart className="w-8 h-8 text-blue-600" />,
   },
   {
     title: "Cohesive Data",
-    description: "Description.",
+    description: "Data that goes beyond numbers to create a clear picture of your school.",
     icon: <Zap className="w-8 h-8 text-blue-600" />,
   },
 ];
