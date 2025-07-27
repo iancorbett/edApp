@@ -146,8 +146,14 @@ app.get("/api/students", authenticateToken, async (req, res) => {
 });
 
 app.get("api/schools", async (req, res) => {
-  
-})
+  try {
+    const result = await pool.query("SELECT id, name FROM schools");
+    res.json(result.rows); 
+  } catch (err) {
+    console.error("Error fetching schools:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 
 app.get("/", (req, res) => {
