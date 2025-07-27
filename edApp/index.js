@@ -60,10 +60,24 @@ app.post("/api/login", async (req, res) => {
         { expiresIn: "1h" } 
       );
 
-      res.status(200).json({ message: "Login successful!", token });
-    } else {
-      res.status(401).json({ message: "Invalid username or password." });
-    }
+      return res.status(200).json({ message: "Login successful!", token });
+    } 
+    
+    const adminResult = await pool.query(
+      "SELECT * FROM admins WHERE username = $1 AND password = $2",
+      [username, password]
+    );
+
+    if (adminResult.rows.length > 0) {
+      const admin = adminResult.rows[0];
+      const token = jwt.sign(
+        { user_id: admin.admin_id, role: "admin" },
+        SECRET_KEY,
+        { expiresIn: "1h" }
+      );
+    
+      return res.status(401).json({ message: "Invalid username or password." });
+    
   } catch (err) {
     console.error("Error during login:", err);
     res.status(500).json({ error: "Internal server error" });
