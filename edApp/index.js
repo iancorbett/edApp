@@ -36,7 +36,7 @@ app.post("/api/signup", async (req, res) => {
       const result = await pool.query(
         `INSERT INTO admins (first_name, last_name, username, email, password, school_id)
          VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-        [`${firstname} ${lastname}`, username, email, password, school_id]
+        [firstname, lastname, username, email, password, school_id]
       );
       return res.status(201).json(result.rows[0]);
     } else {
