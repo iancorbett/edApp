@@ -145,6 +145,10 @@ app.get("/api/students", authenticateToken, async (req, res) => {
     return res.status(403).json({error: "Unauthorized"});
 });
 
+app.get("api/schools", async (req, res) => {
+  
+})
+
 
 app.get("/", (req, res) => {
   res.send("API is running");
