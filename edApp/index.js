@@ -154,7 +154,7 @@ app.get("/api/students", authenticateToken, async (req, res) => {
     return res.status(403).json({error: "Unauthorized"});
 });
 
-app.get("api/schools", async (req, res) => {
+app.get("/api/schools", async (req, res) => {
   try {
     const result = await pool.query("SELECT school_id, name FROM schools");
     res.json(result.rows); 
