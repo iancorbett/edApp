@@ -135,10 +135,14 @@ app.get("/api/students", authenticateToken, async (req, res) => {
     return res.json(result.rows);
   } 
   
-  catch (err) {
-    console.error("Error fetching students:", err);
-    res.status(500).json({ error: "Internal server error" });
+  if (role === "admin") {
+    const result = await pool.query(
+      "SELECT * FROM students WHERE school_id = (SELECT school_id FROM admins WHERE admin_id = $1)",
+      [id]
+    );
+    return res.json(result.rows);
   }
+    return res.status(403).json({error: "Unauthorized"});
 });
 
 
