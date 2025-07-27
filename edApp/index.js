@@ -125,7 +125,7 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
 
 // Add to your server code
 app.get("/api/students", authenticateToken, async (req, res) => {
-  const teacher_id = req.user.teacher_id;
+  const { id, role } = req.user;
 
   try {
     const result = await pool.query(
