@@ -127,14 +127,20 @@ export const SignUpForm = () => {
             <label className="block text-sm font-medium text-gray-700">
               School
             </label>
-            <input
-              type="text"
+            <select
               name="school_id"
-              required
               value={formData.school_id}
               onChange={handleChange}
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+              required
+              className="w-full px-4 py-2 border rounded"
+            >
+              <option value="">-- Select School --</option>
+              {schools.map((school) => (
+                <option key={school.school_id} value={school.school_id}>
+                  {school.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
