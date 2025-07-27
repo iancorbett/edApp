@@ -43,13 +43,13 @@ app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const result = await pool.query(
+    const teacherResult = await pool.query(
       "SELECT * FROM teachers WHERE username = $1 AND password = $2",
       [username, password]
     );
 
-    if (result.rows.length > 0) {
-      const teacher = result.rows[0];
+    if (teacherResult.rows.length > 0) {
+      const teacher = teacherResult.rows[0];
 
       console.log("Teacher row from DB:", teacher);
 
