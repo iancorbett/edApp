@@ -55,7 +55,7 @@ app.post("/api/login", async (req, res) => {
 
 
       const token = jwt.sign(
-        { teacher_id: teacher.teacher_id },
+        { teacher_id: teacher.teacher_id, role: "teacher" },
         SECRET_KEY,
         { expiresIn: "1h" } 
       );
