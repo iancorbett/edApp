@@ -58,6 +58,16 @@ export const SignUpForm = () => {
           Sign Up for EdApp
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+        <label>
+            Role:
+          <select name="role" value={formData.role} onChange={handleChange} required>
+            <option value="">-- Select Role --</option>
+            <option value="teacher">Teacher</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               First Name
