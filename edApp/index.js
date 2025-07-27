@@ -115,7 +115,7 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/addstudent", authenticateToken, async (req, res) => {
   const { first_name, last_name } = req.body;
-  const teacher_id = req.user.teacher_id;
+  const teacher_id = req.user.id;
 
   try {
     const result = await pool.query(
