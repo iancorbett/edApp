@@ -17,7 +17,7 @@ export const ContactForm = () => {
     e.preventDefault();
     emailjs
       .send(
-        "your_service_id",       // Replace with your EmailJS service ID
+        "service_jwqz8d7",       
         "your_template_id",      // Replace with your EmailJS template ID
         formData,
         "your_public_key"        // Replace with your EmailJS public key
