@@ -4,6 +4,7 @@ import { BookOpen, BarChart, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { About } from "../components/About";
+import { ContactForm } from "../components/ContactForm";
 
 const features = [
   {
@@ -64,6 +65,7 @@ export const HomePage = () => {
         </div>
       </section>
       <About />
+      <ContactForm />
       <Footer />
     </div>
   );
