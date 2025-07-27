@@ -62,7 +62,7 @@ export const SignUpForm = () => {
         <div>
         <label>
             Role:
-          <select name="role" value={formData.role} onChange={handleChange} required>
+          <select name="role" value={formData.role} onChange={handleChange} required className="w-full px-4 py-2 border rounded">
             <option value="">-- Select Role --</option>
             <option value="teacher">Teacher</option>
             <option value="admin">Admin</option>
