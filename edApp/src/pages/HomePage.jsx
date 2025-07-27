@@ -7,17 +7,17 @@ import { About } from "../components/About";
 
 const features = [
   {
-    title: "Perk 1",
+    title: "Intuitive Interface",
     description: "Description.",
     icon: <BookOpen className="w-8 h-8 text-blue-600" />,
   },
   {
-    title: "Perk 2",
+    title: "Proactive Intervention",
     description: "Description.",
     icon: <BarChart className="w-8 h-8 text-blue-600" />,
   },
   {
-    title: "Perk 3",
+    title: "Cohesive Data",
     description: "Description.",
     icon: <Zap className="w-8 h-8 text-blue-600" />,
   },
