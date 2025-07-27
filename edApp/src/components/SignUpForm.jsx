@@ -17,6 +17,20 @@ export const SignUpForm = () => {
 
   const [message, setMessage] = useState(""); 
 
+  useEffect(() => {
+    const fetchSchools = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/api/schools");
+        const data = await res.json();
+        setSchools(data);
+      } catch (err) {
+        console.error("Failed to load schools:", err);
+      }
+    };
+
+    fetchSchools();
+  }, []);
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
