@@ -92,7 +92,7 @@ export const SignUpForm = () => {
               type="text"
               name="firstname"
               required
-              value={formData.name}
+              value={formData.firstname}
               onChange={handleChange}
               className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -105,7 +105,7 @@ export const SignUpForm = () => {
               type="text"
               name="lastname"
               required
-              value={formData.name}
+              value={formData.lastname}
               onChange={handleChange}
               className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -118,7 +118,7 @@ export const SignUpForm = () => {
               type="text"
               name="username"
               required
-              value={formData.name}
+              value={formData.username}
               onChange={handleChange}
               className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -129,9 +129,9 @@ export const SignUpForm = () => {
             </label>
             <input
               type="text"
-              name="school"
+              name="school_id"
               required
-              value={formData.name}
+              value={formData.school_id}
               onChange={handleChange}
               className="mt-1 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
