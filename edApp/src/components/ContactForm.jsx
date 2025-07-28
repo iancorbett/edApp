@@ -18,7 +18,7 @@ export const ContactForm = () => {
     emailjs
       .send(
         "service_jwqz8d7",       
-        "your_template_id",      // Replace with your EmailJS template ID
+        "template_yh3i14a",      
         formData,
         "your_public_key"        // Replace with your EmailJS public key
       )
