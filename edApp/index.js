@@ -162,22 +162,38 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
 app.get("/api/students", authenticateToken, async (req, res) => {
   const { id, role } = req.user;
 
-  if (role === "teacher") {
-    const result = await pool.query(
-      "SELECT * FROM students WHERE teacher_id = $1",
-      [id]
-    );
-    return res.json(result.rows);
-  } 
-  
-  if (role === "admin") {
-    const result = await pool.query(
-      "SELECT * FROM students WHERE school_id = (SELECT school_id FROM admins WHERE admin_id = $1)",
-      [id]
-    );
-    return res.json(result.rows);
+  try {
+    if (role === "teacher") {
+      const result = await pool.query(
+        `
+        SELECT s.*
+        FROM students s
+        INNER JOIN teacher_students ts ON s.student_id = ts.student_id
+        WHERE ts.teacher_id = $1
+        `,
+        [id]
+      );
+      return res.json(result.rows);
+    }
+
+    if (role === "admin") {
+      const result = await pool.query(
+        `
+        SELECT *
+        FROM students
+        WHERE school_id = (SELECT school_id FROM admins WHERE admin_id = $1)
+        `,
+        [id]
+      );
+      return res.json(result.rows);
+    }
+
+    return res.status(403).json({ error: "Unauthorized" });
+
+  } catch (err) {
+    console.error("Error fetching students:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
-    return res.status(403).json({error: "Unauthorized"});
 });
 
 app.get("/api/schools", async (req, res) => {
