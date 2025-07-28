@@ -35,7 +35,7 @@ export const HomePage = () => {
       {/* Hero Section */}
       <section className="pt-28 pb-20 text-center px-4 sm:px-6">
         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-          Empower Faster Workflow with EdApp
+          Empower Faster Workflow with Edify
         </h1>
         <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto pt-2">
           Streamline your workflow with our data visualization.
