@@ -54,6 +54,14 @@ export const Students = () => {
                   <td className="py-2 px-4 border-b">{index + 1}</td>
                   <td className="py-2 px-4 border-b">{student.first_name}</td>
                   <td className="py-2 px-4 border-b">{student.last_name}</td>
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      onClick={() => navigate(`/students/${student.student_id}`)}
+                      className="text-blue-600 hover:underline"
+                    >
+                        View Dashboard
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
