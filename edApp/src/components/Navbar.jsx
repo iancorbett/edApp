@@ -35,7 +35,7 @@ export const Navbar = () => {
           <div className="hidden md:flex space-x-6">
             <a href="#">Home</a>
             <a href="#about">About</a>
-            <a href="#">Contact</a>
+            <a href="#contact">Contact</a>
             <Link to="/signup">Sign Up</Link>
             {!isLoggedIn ? (
               <Link to="/login">Log In</Link>

@@ -33,7 +33,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-md p-8 rounded-2xl mt-12">
+    <div id="contact" className="max-w-xl mx-auto bg-white shadow-md p-8 rounded-2xl mt-12">
       <h2 className="text-2xl font-bold mb-6 text-center text-indigo-700">📬 Contact Us</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

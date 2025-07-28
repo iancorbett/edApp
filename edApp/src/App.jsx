@@ -8,6 +8,7 @@ import { AddStudentPage } from './pages/AddStudentPage'
 import { WelcomePage } from './pages/WelcomePage'
 import { Students } from './pages/Students'
 import { FormPage } from './pages/FormPage'
+import { ContactForm } from './components/ContactForm'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/addstudent" element={<AddStudentPage />}/>
         <Route path="/welcome" element={<WelcomePage />}/>
         <Route path="/students" element={<Students />}/>
+        <Route path="/contact" element={<ContactForm />}/>
       </Routes>
     
   )
