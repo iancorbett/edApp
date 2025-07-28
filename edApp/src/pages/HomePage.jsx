@@ -50,7 +50,7 @@ export const HomePage = () => {
       </section>
 
       {/* Feature Cards Section */}
-      <section className="py-4 px-4 sm:px-6">
+      <section className="py-4 px-4 sm:px-6 mb-12">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <div
