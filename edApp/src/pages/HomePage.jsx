@@ -66,6 +66,17 @@ export const HomePage = () => {
       </section>
       <About />
       <ContactForm />
+
+      <div className="text-center my-8">
+  <button
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+  >
+    ↑ Back to Top
+  </button>
+</div>
+
+
       <Footer />
     </div>
   );
