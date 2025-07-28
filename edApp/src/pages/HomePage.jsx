@@ -40,7 +40,7 @@ export const HomePage = () => {
         <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto pt-2">
           Streamline your workflow with our data visualization.
         </p>
-        <div className="mt-6">
+        <div className="mt-12">
             <Link to={"/signup"}>
           <button className="px-6 py-3 bg-black text-white text-lg rounded-md hover:bg-gray-800 transition mt-3">
             Get Started Now
@@ -50,7 +50,7 @@ export const HomePage = () => {
       </section>
 
       {/* Feature Cards Section */}
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-4 px-4 sm:px-6">
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <div
