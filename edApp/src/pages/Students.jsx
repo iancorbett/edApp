@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export const Students = () => {
   const [students, setStudents] = useState([]);
