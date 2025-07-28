@@ -129,6 +129,17 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
 
     const school_id = teacherRes.rows[0].school_id;
 
+    const studentRes = await pool.query(
+      `
+      INSERT INTO students (first_name, last_name, school_id)
+      VALUES ($1, $2, $3)
+      RETURNING *
+      `,
+      [first_name, last_name, school_id]
+    );
+
+    const student = studentRes.rows[0];
+
     res.status(201).json({
       message: "Student added successfully",
       student: result.rows[0],
