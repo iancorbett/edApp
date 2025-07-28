@@ -9,6 +9,7 @@ import { WelcomePage } from './pages/WelcomePage'
 import { Students } from './pages/Students'
 import { FormPage } from './pages/FormPage'
 import { ContactForm } from './components/ContactForm'
+import { StudentDashboard } from './pages/StudentDashboard'
 
 function App() {
 
