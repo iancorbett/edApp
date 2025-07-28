@@ -20,7 +20,7 @@ export const ContactForm = () => {
         "service_jwqz8d7",       
         "template_yh3i14a",      
         formData,
-        "your_public_key"        // Replace with your EmailJS public key
+        "ZWNUTZBCywEwpHXTq"        
       )
       .then(() => {
         setStatus("Message sent successfully!");
