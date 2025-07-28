@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
+import { BackButton } from "../components/BackButton";
 
 export const StudentDashboard = () => {
   const { id } = useParams();
@@ -32,6 +33,7 @@ export const StudentDashboard = () => {
   return (
     <section>
       <Navbar />
+      <BackButton />
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">📋 Student Dashboard</h1>
         <div className="bg-white p-6 rounded shadow border border-gray-200">
