@@ -33,7 +33,7 @@ export const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-6">
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <Link to="/signup">Sign Up</Link>
