@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Students = () => {
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -44,6 +45,7 @@ export const Students = () => {
                 <th className="py-2 px-4 border-b text-left">#</th>
                 <th className="py-2 px-4 border-b text-left">First Name</th>
                 <th className="py-2 px-4 border-b text-left">Last Name</th>
+                <th className="py-2 px-4 border-b text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
