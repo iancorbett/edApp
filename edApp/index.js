@@ -122,6 +122,13 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
       "SELECT school_id FROM teachers WHERE teacher_id = $1",
       [teacher_id]
     );
+
+    if (teacherRes.rows.length === 0) {
+      return res.status(404).json({ error: "Teacher not found" });
+    }
+
+    const school_id = teacherRes.rows[0].school_id;
+
     res.status(201).json({
       message: "Student added successfully",
       student: result.rows[0],
