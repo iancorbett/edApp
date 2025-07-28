@@ -70,7 +70,7 @@ export const HomePage = () => {
       <div className="text-center my-8">
   <button
     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+    className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition mt-12"
   >
     ↑ Back to Top
   </button>
