@@ -196,6 +196,50 @@ app.get("/api/students", authenticateToken, async (req, res) => {
   }
 });
 
+app.get("/api/students/:id", authenticateToken, async (req, res) => {
+  const studentId = req.params.id;
+  const { id, role } = req.user;
+
+  try {
+    if (role === "teacher") {
+      const result = await pool.query(
+        `SELECT s.* FROM students s
+         INNER JOIN teacher_students ts ON s.student_id = ts.student_id
+         WHERE s.student_id = $1 AND ts.teacher_id = $2`,
+        [studentId, id]
+      );
+
+      if (result.rows.length === 0) {
+        return res.status(403).json({ error: "Not authorized to view this student" });
+      }
+
+      return res.json(result.rows[0]);
+    }
+
+    if (role === "admin") {
+      const result = await pool.query(
+        `SELECT * FROM students
+         WHERE student_id = $1 AND school_id = (
+           SELECT school_id FROM admins WHERE admin_id = $2
+         )`,
+        [studentId, id]
+      );
+
+      if (result.rows.length === 0) {
+        return res.status(403).json({ error: "Not authorized to view this student" });
+      }
+
+      return res.json(result.rows[0]);
+    }
+
+    return res.status(403).json({ error: "Unauthorized" });
+  } catch (err) {
+    console.error("Error fetching student:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 app.get("/api/schools", async (req, res) => {
   try {
     const result = await pool.query("SELECT school_id, name FROM schools");
