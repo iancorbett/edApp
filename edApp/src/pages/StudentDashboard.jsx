@@ -6,6 +6,7 @@ import { BackButton } from "../components/BackButton";
 export const StudentDashboard = () => {
   const { id } = useParams();
   const [student, setStudent] = useState(null);
+  const [observations, setObservations] = useState([]);
 
   useEffect(() => {
     const fetchStudent = async () => {
