@@ -118,6 +118,7 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
   const teacher_id = req.user.id;
 
   try {
+    // 1. Get the teacher's school_id
     const teacherRes = await pool.query(
       "SELECT school_id FROM teachers WHERE teacher_id = $1",
       [teacher_id]
@@ -129,24 +130,52 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
 
     const school_id = teacherRes.rows[0].school_id;
 
-    const studentRes = await pool.query(
+    // 2. Check if a student with the same name already exists in that school
+    const existingStudentRes = await pool.query(
       `
-      INSERT INTO students (first_name, last_name, school_id)
-      VALUES ($1, $2, $3)
-      RETURNING *
+      SELECT * FROM students
+      WHERE first_name = $1 AND last_name = $2 AND school_id = $3
       `,
       [first_name, last_name, school_id]
     );
 
-    const student = studentRes.rows[0];
+    let student;
 
-    await pool.query(
+    if (existingStudentRes.rows.length > 0) {
+      // Student already exists
+      student = existingStudentRes.rows[0];
+    } else {
+      // Student does not exist, insert into students table
+      const studentRes = await pool.query(
+        `
+        INSERT INTO students (first_name, last_name, school_id)
+        VALUES ($1, $2, $3)
+        RETURNING *
+        `,
+        [first_name, last_name, school_id]
+      );
+      student = studentRes.rows[0];
+    }
+
+    // 3. Check if this teacher already has that student linked
+    const alreadyLinked = await pool.query(
       `
-      INSERT INTO teacher_students (teacher_id, student_id)
-      VALUES ($1, $2)
+      SELECT * FROM teacher_students
+      WHERE teacher_id = $1 AND student_id = $2
       `,
       [teacher_id, student.student_id]
     );
+
+    if (alreadyLinked.rows.length === 0) {
+      // 4. Link student to teacher
+      await pool.query(
+        `
+        INSERT INTO teacher_students (teacher_id, student_id)
+        VALUES ($1, $2)
+        `,
+        [teacher_id, student.student_id]
+      );
+    }
 
     res.status(201).json({
       message: "Student added successfully",
@@ -157,6 +186,7 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 // Add to your server code
 app.get("/api/students", authenticateToken, async (req, res) => {
