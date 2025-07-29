@@ -1,9 +1,14 @@
 import { FormInput } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { BackButton } from "../components/BackButton";
 
 export const WelcomePage = () => {
   return (
+    <section>
+      <Navbar />
+      <BackButton />
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center text-center">
       <h1 className="text-4xl font-bold mb-6">Welcome to Edify!</h1>
 
@@ -41,5 +46,6 @@ export const WelcomePage = () => {
         </button>
       </div>
     </div>
+    </section>
   );
 };
