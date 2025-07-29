@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 
 
-export const Form = () => {
+export const ObservationForm = () => {
   const [students, setStudents] = useState([]);
   const [step, setStep] = useState(1);
   const [selectedStudent, setSelectedStudent] = useState("");
