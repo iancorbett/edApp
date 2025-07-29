@@ -44,6 +44,7 @@ export const StudentDashboard = () => {
     };
 
     fetchStudent();
+    fetchObservations();
   }, [id]);
 
   if (!student) return <p>Loading...</p>;
