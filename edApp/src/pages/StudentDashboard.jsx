@@ -37,6 +37,7 @@ export const StudentDashboard = () => {
           });
 
           const data = await res.json();
+          console.log("Observations data:", data); 
         setObservations(data);
       } catch (err) {
         console.error("Error fetching observations:", err);
