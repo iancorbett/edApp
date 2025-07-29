@@ -115,22 +115,36 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/addstudent", authenticateToken, async (req, res) => {
   const { first_name, last_name } = req.body;
-  const teacher_id = req.user.id;
+  const user_id = req.user.id;
+  const role = req.user.role;
 
   try {
-    // 1. Get the teacher's school_id
-    const teacherRes = await pool.query(
-      "SELECT school_id FROM teachers WHERE teacher_id = $1",
-      [teacher_id]
-    );
+    let school_id;
 
-    if (teacherRes.rows.length === 0) {
-      return res.status(404).json({ error: "Teacher not found" });
+    // 🔍 Determine school_id based on role
+    if (role === "teacher") {
+      const teacherRes = await pool.query(
+        "SELECT school_id FROM teachers WHERE teacher_id = $1",
+        [user_id]
+      );
+      if (teacherRes.rows.length === 0) {
+        return res.status(404).json({ error: "Teacher not found" });
+      }
+      school_id = teacherRes.rows[0].school_id;
+    } else if (role === "admin") {
+      const adminRes = await pool.query(
+        "SELECT school_id FROM admins WHERE admin_id = $1",
+        [user_id]
+      );
+      if (adminRes.rows.length === 0) {
+        return res.status(404).json({ error: "Admin not found" });
+      }
+      school_id = adminRes.rows[0].school_id;
+    } else {
+      return res.status(403).json({ error: "Unauthorized role" });
     }
 
-    const school_id = teacherRes.rows[0].school_id;
-
-    // 2. Check if a student with the same name already exists in that school
+    // 🔁 Check if student already exists (case-insensitive, trimmed)
     const existingStudentRes = await pool.query(
       `
       SELECT * FROM students
@@ -142,12 +156,9 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
     );
 
     let student;
-
     if (existingStudentRes.rows.length > 0) {
-      // Student already exists
       student = existingStudentRes.rows[0];
     } else {
-      // Student does not exist, insert into students table
       const studentRes = await pool.query(
         `
         INSERT INTO students (first_name, last_name, school_id)
@@ -159,24 +170,25 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
       student = studentRes.rows[0];
     }
 
-    // 3. Check if this teacher already has that student linked
-    const alreadyLinked = await pool.query(
-      `
-      SELECT * FROM teacher_students
-      WHERE teacher_id = $1 AND student_id = $2
-      `,
-      [teacher_id, student.student_id]
-    );
-
-    if (alreadyLinked.rows.length === 0) {
-      // 4. Link student to teacher
-      await pool.query(
+    
+    if (role === "teacher") {
+      const alreadyLinked = await pool.query(
         `
-        INSERT INTO teacher_students (teacher_id, student_id)
-        VALUES ($1, $2)
+        SELECT * FROM teacher_students
+        WHERE teacher_id = $1 AND student_id = $2
         `,
-        [teacher_id, student.student_id]
+        [user_id, student.student_id]
       );
+
+      if (alreadyLinked.rows.length === 0) {
+        await pool.query(
+          `
+          INSERT INTO teacher_students (teacher_id, student_id)
+          VALUES ($1, $2)
+          `,
+          [user_id, student.student_id]
+        );
+      }
     }
 
     res.status(201).json({
@@ -188,6 +200,7 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 
 // Add to your server code
