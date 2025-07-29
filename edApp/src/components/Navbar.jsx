@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { HomePage } from '../pages/HomePage';
+
 
 
 export const Navbar = () => {
@@ -36,7 +36,8 @@ export const Navbar = () => {
             <Link to="/">Home</Link>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <Link to="/signup">Sign Up</Link>
+            {!isLoggedIn && <Link to="/signup">Sign Up</Link>}
+
             {!isLoggedIn ? (
               <Link to="/login">Log In</Link>
             ) : (
