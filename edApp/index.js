@@ -250,6 +250,42 @@ app.get("/api/schools", async (req, res) => {
   }
 });
 
+app.post("/api/observations", authenticateToken, async (req, res) => {
+  const { student_id, observation_type, observation_text } = req.body;
+  const { id, role } = req.user;
+
+  try {
+    let query, values;
+
+    if (role === "teacher") {
+      query = `
+        INSERT INTO observations (student_id, teacher_id, observation_type, observation_text)
+        VALUES ($1, $2, $3, $4)
+        RETURNING *`;
+      values = [student_id, id, observation_type, observation_text];
+    } else if (role === "admin") {
+      query = `
+        INSERT INTO observations (student_id, admin_id, observation_type, observation_text)
+        VALUES ($1, $2, $3, $4)
+        RETURNING *`;
+      values = [student_id, id, observation_type, observation_text];
+    } else {
+      return res.status(403).json({ error: "Unauthorized to submit observations" });
+    }
+
+    const result = await pool.query(query, values);
+    res.status(201).json({
+      message: "Observation submitted successfully",
+      observation: result.rows[0],
+    });
+  } catch (err) {
+    console.error("Error submitting observation:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+
 
 app.get("/", (req, res) => {
   res.send("API is running");
