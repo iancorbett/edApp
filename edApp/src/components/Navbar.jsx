@@ -72,7 +72,16 @@ export const Navbar = () => {
             {!isLoggedIn && <a href="#about" className="block px-2 py-1 text-gray-700 hover:text-blue-500">About</a>}
             {!isLoggedIn && <a href="#contact" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Contact</a>}
             {!isLoggedIn && <Link to="/signup" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Sign Up</Link>}
-            {!isLoggedIn && <Link to="/login" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Log In</Link>}
+            {!isLoggedIn ? (
+              <Link to="/login">Log In</Link>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-red-400"
+              >
+                Logout
+              </button>
+            )}
           </div>
         )}
       </div>
