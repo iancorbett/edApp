@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { BackButton } from "../components/BackButton";
 
 export const Students = () => {
   const [students, setStudents] = useState([]);
@@ -31,6 +32,7 @@ export const Students = () => {
     <section>
 
     <Navbar />
+    <BackButton />
 
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-6">👩‍🏫 Your Students</h1>
