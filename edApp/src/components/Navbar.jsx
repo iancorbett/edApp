@@ -71,8 +71,8 @@ export const Navbar = () => {
             {/* <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Home</a> */}
             {!isLoggedIn && <a href="#about" className="block px-2 py-1 text-gray-700 hover:text-blue-500">About</a>}
             {!isLoggedIn && <a href="#contact" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Contact</a>}
-            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Sign Up</a>
-            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Log In</a>
+            {!isLoggedIn && <Link to="/signup" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Sign Up</Link>}
+            {!isLoggedIn && <Link to="/login" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Log In</Link>}
           </div>
         )}
       </div>
