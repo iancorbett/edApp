@@ -34,8 +34,8 @@ export const Navbar = () => {
           {/* Desktop Nav */}
           <div className="hidden md:flex space-x-6">
             <Link to="/">Home</Link>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            {!isLoggedIn && <a href="#about">About</a>}
+            {!isLoggedIn && <a href="#contact">Contact</a>}
             {!isLoggedIn && <Link to="/signup">Sign Up</Link>}
 
             {!isLoggedIn ? (
