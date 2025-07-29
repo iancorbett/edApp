@@ -69,8 +69,8 @@ export const Navbar = () => {
         {isOpen && (
           <div className="md:hidden mt-2 space-y-2 pb-4">
             {/* <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Home</a> */}
-            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">About</a>
-            <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Contact</a>
+            <a href="#about" className="block px-2 py-1 text-gray-700 hover:text-blue-500">About</a>
+            <a href="#contact" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Contact</a>
             <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Sign Up</a>
             <a href="#" className="block px-2 py-1 text-gray-700 hover:text-blue-500">Log In</a>
           </div>
