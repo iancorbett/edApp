@@ -26,6 +26,23 @@ export const StudentDashboard = () => {
       }
     };
 
+    const fetchObservations = async () => {
+        const token = localStorage.getItem("token");
+  
+        try {
+          const res = await fetch(`http://localhost:3001/api/observations/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const data = await res.json();
+        setObservations(data);
+      } catch (err) {
+        console.error("Error fetching observations:", err);
+      }
+    };
+
     fetchStudent();
   }, [id]);
 
