@@ -134,7 +134,9 @@ app.post("/api/addstudent", authenticateToken, async (req, res) => {
     const existingStudentRes = await pool.query(
       `
       SELECT * FROM students
-      WHERE first_name = $1 AND last_name = $2 AND school_id = $3
+      WHERE LOWER(TRIM(first_name)) = LOWER(TRIM($1))
+        AND LOWER(TRIM(last_name)) = LOWER(TRIM($2))
+        AND school_id = $3
       `,
       [first_name, last_name, school_id]
     );
