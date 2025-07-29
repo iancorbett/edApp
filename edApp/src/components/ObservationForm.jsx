@@ -19,23 +19,41 @@ export const ObservationForm = () => {
     if (step > 1) setStep(step - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const newObservation = {
-      student: selectedStudent,
-      type: observationType,
-      description: behaviorDesc,
-      timestamp: new Date().toISOString(),
-    };
-
-    const stored = JSON.parse(localStorage.getItem("observations")) || [];
-    const updated = [...stored, newObservation];
-    localStorage.setItem("observations", JSON.stringify(updated));
-
-    console.log("Saved to localStorage:", newObservation);
-
-    setSubmitted(true);
+  
+    const token = localStorage.getItem("token");
+  
+    try {
+      const res = await fetch("http://localhost:3001/api/observations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          student_id: selectedStudent,
+          observation_type: observationType,
+          observation_text: behaviorDesc,
+        }),
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        console.log("Observation saved:", data);
+        setSubmitted(true);
+        setStep(1);
+        setSelectedStudent("");
+        setObservationType("");
+        setBehaviorDesc("");
+      } else {
+        alert(data.error || "Failed to save observation.");
+      }
+    } catch (err) {
+      console.error("Error saving observation:", err);
+      alert("Server error");
+    }
   };
 
   useEffect(() => {
