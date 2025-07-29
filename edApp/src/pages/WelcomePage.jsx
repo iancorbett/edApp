@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const WelcomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center text-center">
-      <h1 className="text-4xl font-bold mb-6">Welcome to EdApp!</h1>
+      <h1 className="text-4xl font-bold mb-6">Welcome to Edify!</h1>
 
       <p className="text-lg mb-8">What would you like to do today?</p>
 
