@@ -252,37 +252,34 @@ app.get("/api/schools", async (req, res) => {
 
 app.post("/api/observations", authenticateToken, async (req, res) => {
   const { student_id, observation_type, observation_text } = req.body;
-  const { id, role } = req.user;
+  const { id: userId, role } = req.user;
 
   try {
-    let query, values;
-
+    // Determine if the user is a teacher or admin
+    let result;
     if (role === "teacher") {
-      query = `
-        INSERT INTO observations (student_id, teacher_id, observation_type, observation_text)
-        VALUES ($1, $2, $3, $4)
-        RETURNING *`;
-      values = [student_id, id, observation_type, observation_text];
+      result = await pool.query(
+        `INSERT INTO observations (student_id, teacher_id, observation_type, observation_text)
+         VALUES ($1, $2, $3, $4) RETURNING *`,
+        [student_id, userId, observation_type, observation_text]
+      );
     } else if (role === "admin") {
-      query = `
-        INSERT INTO observations (student_id, admin_id, observation_type, observation_text)
-        VALUES ($1, $2, $3, $4)
-        RETURNING *`;
-      values = [student_id, id, observation_type, observation_text];
+      result = await pool.query(
+        `INSERT INTO observations (student_id, admin_id, observation_type, observation_text)
+         VALUES ($1, $2, $3, $4) RETURNING *`,
+        [student_id, userId, observation_type, observation_text]
+      );
     } else {
-      return res.status(403).json({ error: "Unauthorized to submit observations" });
+      return res.status(403).json({ error: "Unauthorized role" });
     }
 
-    const result = await pool.query(query, values);
-    res.status(201).json({
-      message: "Observation submitted successfully",
-      observation: result.rows[0],
-    });
+    res.status(201).json({ message: "Observation submitted", observation: result.rows[0] });
   } catch (err) {
     console.error("Error submitting observation:", err);
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 
 
