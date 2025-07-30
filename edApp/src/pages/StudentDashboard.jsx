@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { BackButton } from "../components/BackButton";
+import { StudentIndicators } from "../components/StudentIndicators";
 
 export const StudentDashboard = () => {
   const { id } = useParams();
@@ -54,6 +55,7 @@ export const StudentDashboard = () => {
     <section>
       <Navbar />
       <BackButton />
+      <StudentIndicators />
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">📋 {student.first_name} {student.last_name}</h1>
         
