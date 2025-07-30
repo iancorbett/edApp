@@ -55,7 +55,7 @@ export const StudentDashboard = () => {
       <Navbar />
       <BackButton />
       <div className="p-8">
-        <h1 className="text-3xl font-bold mb-4">📋 Student Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-4">📋 {student.first_name} {student.last_name}</h1>
         <div className="bg-white p-6 rounded shadow border border-gray-200 mb-6">
           <p><strong>First Name:</strong> {student.first_name}</p>
           <p><strong>Last Name:</strong> {student.last_name}</p>
