@@ -1,22 +1,45 @@
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 
-export const StudentIndicators = ({ onSelect }) => {
+export const StudentIndicators = () => {
+  const { id: studentId } = useParams(); // grab student ID from URL
+
   const indicators = [
-    { label: "Academic", from: "from-green-400", to: "to-green-600", ring: "ring-green-300" },
-    { label: "Social/Emotional", from: "from-yellow-300", to: "to-yellow-500", ring: "ring-yellow-300" },
-    { label: "Behavioral", from: "from-red-400", to: "to-red-600", ring: "ring-red-300" },
+    {
+      label: "Academic",
+      from: "from-green-400",
+      to: "to-green-600",
+      ring: "ring-green-300",
+      route: "academic",
+    },
+    {
+      label: "Social/Emotional",
+      from: "from-yellow-300",
+      to: "to-yellow-500",
+      ring: "ring-yellow-300",
+      route: "social-emotional",
+    },
+    {
+      label: "Behavioral",
+      from: "from-red-400",
+      to: "to-red-600",
+      ring: "ring-red-300",
+      route: "behavioral",
+    },
   ];
 
   return (
     <div className="w-full flex flex-col md:flex-row justify-around items-center gap-12 mt-10">
       {indicators.map((indicator) => (
-        <div
+        <Link
           key={indicator.label}
-          onClick={() => onSelect(indicator.label)}
+          to={`/observations/${studentId}/${indicator.route}`}
           className="flex flex-col items-center cursor-pointer group"
         >
           {/* Label */}
-          <p className="mb-4 text-lg md:text-2xl font-semibold underline">{indicator.label}</p>
+          <p className="mb-4 text-lg md:text-2xl font-semibold underline">
+            {indicator.label}
+          </p>
 
           {/* Outer ring + glow */}
           <div
@@ -29,7 +52,7 @@ export const StudentIndicators = ({ onSelect }) => {
                 shadow-md group-hover:shadow-lg transition-all duration-300`}
             />
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
