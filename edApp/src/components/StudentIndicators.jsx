@@ -37,7 +37,7 @@ export const StudentIndicators = () => {
           className="flex flex-col items-center cursor-pointer group"
         >
           {/* Label */}
-          <p className="mb-4 text-lg md:text-2xl font-semibold underline">
+          <p className="mb-4 text-lg md:text-3xl font-semibold underline text-gray-800">
             {indicator.label}
           </p>
 
