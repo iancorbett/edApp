@@ -16,7 +16,7 @@ export const StudentIndicators = ({ onSelect }) => {
           className="flex flex-col items-center cursor-pointer group"
         >
           {/* Label */}
-          <p className="mb-4 text-lg md:text-xl font-semibold">{indicator.label}</p>
+          <p className="mb-4 text-lg md:text-2xl font-semibold">{indicator.label}</p>
 
           {/* Outer ring + glow */}
           <div
