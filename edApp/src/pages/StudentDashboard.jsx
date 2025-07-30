@@ -55,10 +55,10 @@ export const StudentDashboard = () => {
     <section>
       <Navbar />
       <BackButton />
-      <StudentIndicators />
+      
       <div className="p-8">
         <h1 className="text-3xl font-bold mb-4">📋 {student.first_name} {student.last_name}</h1>
-        
+        <StudentIndicators />
 
         <div className="bg-white p-6 rounded shadow border border-gray-200">
           <h2 className="text-2xl font-semibold mb-4">📝 Observations</h2>
