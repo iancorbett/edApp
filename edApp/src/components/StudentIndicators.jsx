@@ -33,7 +33,7 @@ export const StudentIndicators = () => {
       {indicators.map((indicator) => (
         <Link
           key={indicator.label}
-          to={`/observations/${studentId}/${indicator.route}`}
+          to={`/observations/${studentId}?type=${indicator.label.toLowerCase()}`}
           className="flex flex-col items-center cursor-pointer group"
         >
           {/* Label */}
