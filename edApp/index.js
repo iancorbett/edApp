@@ -371,6 +371,8 @@ app.get("/api/observations/:studentId", authenticateToken, async (req, res) => {
       `,
       [studentId]
     );
+  } else {
+    return res.status(403).json({ error: "Unauthorized role" });
   }
 
     res.json(result.rows);
