@@ -350,6 +350,27 @@ app.get("/api/observations/:studentId", authenticateToken, async (req, res) => {
       `,
       [studentId, userId]
     );
+  } else if (role === "admin") {
+    
+    result = await pool.query(
+      `
+      SELECT 
+        o.observation_id,
+        o.observation_type,
+        o.observation_text,
+        o.created_at,
+        t.first_name AS teacher_first_name,
+        t.last_name AS teacher_last_name,
+        a.first_name AS admin_first_name,
+        a.last_name AS admin_last_name
+      FROM observations o
+      LEFT JOIN teachers t ON o.teacher_id = t.teacher_id
+      LEFT JOIN admins a ON o.admin_id = a.admin_id
+      WHERE o.student_id = $1
+      ORDER BY o.created_at DESC
+      `,
+      [studentId]
+    );
   }
 
     res.json(result.rows);
