@@ -25,9 +25,12 @@ export const ObservationsPage = () => {
 
       // If a filter is selected, apply it
       if (selectedType) {
-        const filtered = data.filter(obs =>
-          obs.observation_type.toLowerCase() === selectedType
-        );
+        const filtered = data.filter(obs => {
+          const typeNormalized = obs.observation_type.replace(/_/g, "").toLowerCase();
+          const selectedNormalized = selectedType.replace(/[^a-z]/gi, "").toLowerCase();
+          return typeNormalized === selectedNormalized;
+        });
+      
         setObservations(filtered);
       } else {
         setObservations(data);
@@ -54,10 +57,13 @@ export const ObservationsPage = () => {
             <li key={obs.observation_id} className="bg-white p-4 rounded shadow">
               <p className="font-semibold">{obs.observation_type}</p>
               <p>{obs.observation_text}</p>
-              <p className="text-sm text-gray-500">
-                Submitted by {obs.teacher_first_name || obs.admin_first_name} on{" "}
-                {new Date(obs.created_at).toLocaleDateString()}
-              </p>
+              <p className="text-sm text-gray-500 mt-1">
+              Submitted by{" "}
+             {obs.teacher_first_name
+          ? `👩‍🏫 ${obs.teacher_first_name} ${obs.teacher_last_name}`
+          : `🧑‍💼 ${obs.admin_first_name} ${obs.admin_last_name}`}{" "}
+            on {new Date(obs.created_at).toLocaleDateString()}
+          </p>
             </li>
           ))}
         </ul>
