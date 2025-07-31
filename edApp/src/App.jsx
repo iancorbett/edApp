@@ -10,6 +10,7 @@ import { Students } from './pages/Students'
 import { FormPage } from './pages/FormPage'
 import { ContactForm } from './components/ContactForm'
 import { StudentDashboard } from './pages/StudentDashboard'
+import { ObservationsPage } from './pages/ObservationsPage'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/students" element={<Students />}/>
         <Route path="/contact" element={<ContactForm />}/>
         <Route path="/students/:id" element={<StudentDashboard />} />
+        <Route path="/observations" element={<ObservationsPage />} />
       </Routes>
     
   )
