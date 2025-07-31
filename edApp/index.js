@@ -328,9 +328,13 @@ app.post("/api/observations", authenticateToken, async (req, res) => {
 
 app.get("/api/observations/:studentId", authenticateToken, async (req, res) => {
   const { studentId } = req.params;
+  const { id: userId, role } = req.user;
 
   try {
-    const result = await pool.query(
+    let result;
+
+    if (role === "teacher") {
+     result = await pool.query(
       `
       SELECT 
         o.observation_id,
@@ -347,8 +351,9 @@ app.get("/api/observations/:studentId", authenticateToken, async (req, res) => {
       WHERE o.student_id = $1
       ORDER BY o.created_at DESC
       `,
-      [studentId]
+      [studentId, userId]
     );
+  }
 
     res.json(result.rows);
   } catch (err) {
