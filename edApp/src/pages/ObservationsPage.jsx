@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { BackButton } from "../components/BackButton";
 
 export const ObservationsPage = () => {
   const { studentId } = useParams();
@@ -36,6 +38,9 @@ export const ObservationsPage = () => {
   }, [studentId, selectedType]);
 
   return (
+    <section>
+      <Navbar />
+      <BackButton />
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4 capitalize">
         {selectedType ? `${selectedType} Observations` : "All Observations"}
@@ -58,6 +63,7 @@ export const ObservationsPage = () => {
         </ul>
       )}
     </div>
+    </section>
   );
 };
 
